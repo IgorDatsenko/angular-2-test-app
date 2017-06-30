@@ -9,48 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var Todo = (function () {
-    function Todo(title, completed) {
-        if (completed === void 0) { completed = false; }
-        this.completed = completed;
-        this.title = title;
-    }
-    return Todo;
-}());
-var todos = [
-    {
-        completed: false,
-        title: 'Изучить Javascript'
-    },
-    {
-        completed: false,
-        title: 'Изучить Angular 2'
-    },
-    {
-        completed: false,
-        title: 'Написать приложение'
-    }
-];
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Angular 2Do';
-        this.todos = todos;
-        this.newTodoTitle = '';
     }
-    AppComponent.prototype.toggle = function (todo) {
-        todo.completed = !todo.completed;
-    };
-    AppComponent.prototype.delete = function (todo) {
-        var index = todos.indexOf(todo);
-        if (index > -1) {
-            todos.splice(index, 1);
-        }
-    };
-    AppComponent.prototype.create = function () {
-        var todo = new Todo(this.newTodoTitle);
-        todos.push(todo);
-        this.newTodoTitle = "";
-    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
