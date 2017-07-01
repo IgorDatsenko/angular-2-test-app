@@ -14,8 +14,10 @@ export class TodoItemComponent {
 
     @Output() delete = new EventEmitter();
 
-    toggle() {
-        this.todo.completed = !this.todo.completed;
+    @Output() toggle = new EventEmitter();
+
+    onToggle() {
+        this.toggle.emit(this.todo);
     }
 
     onDelete() {

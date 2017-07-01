@@ -14,7 +14,6 @@ var data_1 = require('./shared/data');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Angular 2Do';
-        this.todos = data_1.todos;
     }
     AppComponent.prototype.add = function (title) {
         var newTodo = new todo_1.Todo(title);
