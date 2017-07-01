@@ -1,5 +1,9 @@
 import  {Component} from '@angular/core'
 
+import {Todo} from './shared/todo';
+
+import {todos} from './shared/data';
+
 @Component({
     moduleId: module.id,
     selector: 'app',
@@ -10,15 +14,11 @@ import  {Component} from '@angular/core'
 export class AppComponent {
     title = 'Angular 2Do';
 
-    // toggle(todo: Todo) {
-    //     todo.completed =  !todo.completed;
-    // }
-    //
-    // delete( todo: Todo) {
-    //     let index = todos.indexOf(todo);
-    //
-    //     if (index > -1) {
-    //         todos.splice(index, 1);
-    //     }
-    // }
+    todos: Todo[] = todos;
+
+    add(title: string) {
+       const newTodo = new Todo(title);
+
+       todos.push(newTodo);
+    }
 }

@@ -9,10 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var todo_1 = require('./shared/todo');
+var data_1 = require('./shared/data');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Angular 2Do';
+        this.todos = data_1.todos;
     }
+    AppComponent.prototype.add = function (title) {
+        var newTodo = new todo_1.Todo(title);
+        data_1.todos.push(newTodo);
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

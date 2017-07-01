@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 
 @Component({
     moduleId: module.id,
@@ -9,12 +9,11 @@ import {Component} from "@angular/core";
 
 export class TodoComponent {
 
+    @Output() create = new EventEmitter();
+
     newTodoTitle: string = '';
-    create() {
-        // let todo = new Todo(this.newTodoTitle);
-        //
-        // todos.push(todo);
-        //
-        // this.newTodoTitle = "";
+    onSubmit() {
+       this.create.emit(this.newTodoTitle);
+        this.newTodoTitle = "";
     }
 }

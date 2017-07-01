@@ -5,7 +5,7 @@
 
 <main>
 
-  <todo-form></todo-form>
+  <todo-form (create)="add($event)"></todo-form>
 
-  <todo-list></todo-list>
+  <todo-list [todos]="todos"></todo-list>
 </main>
