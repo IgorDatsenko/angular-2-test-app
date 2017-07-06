@@ -2,7 +2,6 @@ import  {Component} from '@angular/core'
 
 import {Todo} from './shared/todo';
 
-import {todos} from './shared/data';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +16,5 @@ export class AppComponent {
 
     add(title: string) {
        const newTodo = new Todo(title);
-
-       todos.push(newTodo);
     }
 }
