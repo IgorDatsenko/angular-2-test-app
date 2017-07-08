@@ -12,14 +12,17 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var data_service_1 = require("./shared/data.service");
+var app_route_1 = require("./app.route");
 var app_component_1 = require('./app.component');
 var todo_form_component_1 = require('./todos/todo-form/todo-form.component');
 var todo_list_component_1 = require('./todos/todo-list/todo-list-component');
 var todo_item_component_1 = require('./todos/todo-item/todo-item.component');
 var todos_component_1 = require("./todos/todos.component");
 var todo_service_1 = require("./shared/todo.service");
+var not_fond_component_1 = require("./not-fond/not-fond.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,14 +32,16 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
-                angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(data_service_1.InMemoryDataService)
+                angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(data_service_1.InMemoryDataService),
+                router_1.RouterModule.forRoot(app_route_1.appRoutes)
             ],
             declarations: [
                 app_component_1.AppComponent,
-                todo_form_component_1.TodoComponent,
+                todo_form_component_1.TodoFormComponent,
                 todo_list_component_1.TodoListComponent,
                 todo_item_component_1.TodoItemComponent,
-                todos_component_1.TodosComponent
+                todos_component_1.TodosComponent,
+                not_fond_component_1.NotFoundComponent
             ],
             providers: [todo_service_1.TodoService],
             bootstrap: [app_component_1.AppComponent]

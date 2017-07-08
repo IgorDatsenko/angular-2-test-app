@@ -8,7 +8,7 @@ import {create} from "domain";
     styleUrls: ['todo-form.component.css']
 })
 
-export class TodoComponent {
+export class TodoFormComponent {
 
     @Output() create = new EventEmitter();
 
