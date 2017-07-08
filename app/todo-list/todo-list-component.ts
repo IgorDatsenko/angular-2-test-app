@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.todoSercice.getTodos().then(todos => this.todos = todos);
+        this.todoSercice.getTodos().subscribe(todos => this.todos = todos);
     }
 
     delete(todo: Todo) {

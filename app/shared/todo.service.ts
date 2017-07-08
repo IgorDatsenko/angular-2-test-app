@@ -1,6 +1,10 @@
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
-import 'rxjs/add/operator/toPromise'
+import {Observable} from "rxjs/Observable";
+
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/catch'
+import 'rxjs/observable/throw'
 
 import  {Todo} from "./todo";
 
@@ -11,12 +15,11 @@ export class TodoService {
 
     constructor(private  http: Http) {};
 
-    getTodos(): Promise <Todo[]> {
+    getTodos(): Observable <Todo[]> {
         return this.http
             .get(this.apiUrl)
-            .toPromise()
-            .then(res => res.json().data)
-            .then(todos => this.todos = todos)
+            .map(res => res.json().data)
+            .map(todos => this.todos = todos)
             .catch(this.handleError);
     }
 
@@ -27,10 +30,10 @@ export class TodoService {
 
         this.http
             .post(this.apiUrl, newTodo, options)
-            .toPromise()
-            .then(res => res.json().data)
-            .then(todo => this.todos.push(todo))
-            .catch(this.handleError);
+            .map(res => res.json().data)
+            .map(todo => this.todos.push(todo))
+            .catch(this.handleError)
+            .subscribe();
 
     }
 
@@ -41,15 +44,15 @@ export class TodoService {
 
       this.http
           .delete(url, options)
-          .toPromise()
-          .then(res => {
+          .map(res => {
             let index = this.todos.indexOf(todo);
 
             if (index > -1) {
               this.todos.splice(index, 1);
             }
           })
-          .catch(this.handleError);
+          .catch(this.handleError)
+          .subscribe();
     }
 
     toggleTodo(todo: Todo) {
@@ -59,11 +62,11 @@ export class TodoService {
 
       this.http
           .put(url, todo,options)
-          .toPromise()
-          .then(res => {
+          .map(res => {
             todo.completed = !todo.completed;
           })
-          .catch(this.handleError);
+          .catch(this.handleError)
+          .subscribe();
 
     }
 
