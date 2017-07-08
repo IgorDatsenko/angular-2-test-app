@@ -28,13 +28,10 @@ export class TodoService {
         let options = new RequestOptions({headers});
         const newTodo = new Todo(title);
 
-        this.http
+        return this.http
             .post(this.apiUrl, newTodo, options)
             .map(res => res.json().data)
-            .map(todo => this.todos.push(todo))
-            .catch(this.handleError)
-            .subscribe();
-
+            .catch(this.handleError);
     }
 
     deleteTodo(todo: Todo) {
@@ -42,17 +39,9 @@ export class TodoService {
       let options = new RequestOptions({headers});
       let url = `${this.apiUrl}/${todo.id}`;
 
-      this.http
+      return this.http
           .delete(url, options)
-          .map(res => {
-            let index = this.todos.indexOf(todo);
-
-            if (index > -1) {
-              this.todos.splice(index, 1);
-            }
-          })
-          .catch(this.handleError)
-          .subscribe();
+          .catch(this.handleError);
     }
 
     toggleTodo(todo: Todo) {
@@ -60,14 +49,9 @@ export class TodoService {
       let options = new RequestOptions({headers});
       let url = `${this.apiUrl}/${todo.id}`;
 
-      this.http
+      return this.http
           .put(url, todo,options)
-          .map(res => {
-            todo.completed = !todo.completed;
-          })
-          .catch(this.handleError)
-          .subscribe();
-
+          .catch(this.handleError);
     }
 
     private handleError(e: any) {

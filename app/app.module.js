@@ -15,9 +15,10 @@ var http_1 = require("@angular/http");
 var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var data_service_1 = require("./shared/data.service");
 var app_component_1 = require('./app.component');
-var todo_form_component_1 = require('./todo-form/todo-form.component');
-var todo_list_component_1 = require('./todo-list/todo-list-component');
-var todo_item_component_1 = require('./todo-item/todo-item.component');
+var todo_form_component_1 = require('./todos/todo-form/todo-form.component');
+var todo_list_component_1 = require('./todos/todo-list/todo-list-component');
+var todo_item_component_1 = require('./todos/todo-item/todo-item.component');
+var todos_component_1 = require("./todos/todos.component");
 var todo_service_1 = require("./shared/todo.service");
 var AppModule = (function () {
     function AppModule() {
@@ -34,7 +35,8 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 todo_form_component_1.TodoComponent,
                 todo_list_component_1.TodoListComponent,
-                todo_item_component_1.TodoItemComponent
+                todo_item_component_1.TodoItemComponent,
+                todos_component_1.TodosComponent
             ],
             providers: [todo_service_1.TodoService],
             bootstrap: [app_component_1.AppComponent]
