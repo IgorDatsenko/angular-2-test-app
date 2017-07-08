@@ -11,7 +11,6 @@ import  {Todo} from "./todo";
 @Injectable()
 export class TodoService {
     private apiUrl = 'api/todos';
-    todos: Todo[];
 
     constructor(private  http: Http) {};
 
@@ -19,7 +18,6 @@ export class TodoService {
         return this.http
             .get(this.apiUrl)
             .map(res => res.json().data)
-            .map(todos => this.todos = todos)
             .catch(this.handleError);
     }
 
